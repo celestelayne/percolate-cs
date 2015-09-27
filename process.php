@@ -1,27 +1,28 @@
 <?php
 
-function cors() {
+header('Access-Control-Allow-Origin: *'); // so anyone can access
+header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
+header('Access-Control-Allow-Headers: Content-Type, Content-Range, Content-Disposition, Content-Description');
 
-    // Allow from any origin
-    if (isset($_SERVER['HTTP_ORIGIN'])) {
-        header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
-        header('Access-Control-Allow-Credentials: true');
-        header('Access-Control-Max-Age: 86400');    // cache for 1 day
-    }
+$_POST['extra']='POST Request from http://celestelayne.github.io/percolate-cs/';
+echo json_encode($_POST);
 
-    // Access-Control headers are received during OPTIONS requests
-    if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+$ajax = isset($_SERVER['HTTP_X_REQUESTED_WITH']) &&
+        $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest';
 
-        if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD']))
-            header("Access-Control-Allow-Methods: GET, POST, OPTIONS");         
+if ($ajax) {
+    // handle differently
+}
 
-        if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']))
-            header("Access-Control-Allow-Headers: {$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
-
-        exit(0);
-    }
-
-    echo "You have CORS!";
+// respond to preflights
+if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+  // return only the headers and not the content
+  // only allow CORS if we're doing a GET - i.e. no saving for now.
+  if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD']) && $_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD'] == 'GET') {
+    header('Access-Control-Allow-Origin: *');
+    header('Access-Control-Allow-Headers: X-Requested-With');
+  }
+  exit;
 }
 
 $errors     = array();

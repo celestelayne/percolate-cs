@@ -1,4 +1,5 @@
 $(document).ready(function(){
+
 	$('form').submit(function(event){
 
 		$('.form-group').removeClass('has-error'); // remove the error class
@@ -10,25 +11,31 @@ $(document).ready(function(){
 				'phone'				: $('input[name=Phone]').val(),
 				'email'				: $('input[name=Email]').val(),
 				'company'			: $('input[name=Company]').val(),
-				'jobFunction': $('input[name=Job_Function]').val()			
+				'jobFunction'	: $('select[name=Job_Function]').val()			
 		};
+
+		console.log(formData);
 
 		// process the form
 		$.ajax({
-			type 			: 'POST',
+			type 			: 'GET',
+			headers		: {
+	        'Accept': 'application/json',
+	        'Content-Type': 'text/plain'
+	    },
 			url				: 'http://celestelayne.github.io/percolate-cs/process.php', // url where we want to post
-			contentType: 'text/plain',
-			crossDomain: true,
-			xhrFields: {
-				withCredentials: false
-			},
-			headers: {
-				// Set any custom headers here
-				'Access-Control-Allow-Credentials: true', 'Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}', 'Access-Control-Max-Age: 86400'
-			},
 			data			: formData, // data object
 			dataType	: 'json', // type of data we expect back
-			encode		: true
+      crossDomain: true,
+      success:function(data)
+			 {
+			 	console.log(data);
+			 	alert("Data from Form"+JSON.stringify(data));
+			 },
+			 error:function(jqXHR,textStatus,errorThrown)
+			 {
+			 	alert("You can not send Cross Domain AJAX requests: "+errorThrown);
+			 }
 		})
 
 			.done(function(data) {
@@ -79,9 +86,6 @@ $(document).ready(function(){
 					// ALL GOOD! just show the success message!
 					$('form').append('<div class="alert alert-success">' + data.message + '</div>');
 
-					// usually after form submission, you'll want to redirect
-					// window.location = '/thank-you'; // redirect a user to another page
-
 				}
 			})
 
@@ -93,6 +97,15 @@ $(document).ready(function(){
 				console.log(data);
 			
 			});
+
+				var xhr = new XMLHttpRequest();
+				xhr.open('GET', 'http://celestelayne.github.io/percolate-cs/', true);
+				xhr.setRequestHeader({'Accept': 'application/json', 'Content-Type': 'text/plain'});
+				xhr.onload = function () {
+				    console.log(xhr.responseText);
+				};
+				xhr.send();
+
 				// stop the form from actually posting
 				event.preventDefault();
 		
