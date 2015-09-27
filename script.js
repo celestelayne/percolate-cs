@@ -14,6 +14,7 @@ $(document).ready(function(){
 		console.log(formData);
 
 		// process the form
+$("#seeperc").click(function() {
 			$.ajax({
 				type 			: 'POST',
 				url				: 'http://celestelayne.github.io/percolate-cs/process.php', // url where we want to post
@@ -21,14 +22,15 @@ $(document).ready(function(){
 				dataType	: 'json', // type of data we expect back
 	      contentType: "application/x-www-form-urlencoded; charset=utf-8",
 	      success:function(data)
-				 {
-				 	console.log(formData);
-				 },
+					 {
+					 	console.log(formData);
+					 },
 				error:function(jqXHR,textStatus,errorThrown)
-				 {
-				 	alert("You can not send Cross Domain AJAX requests: "+errorThrown);
-				 }
-		})
+					 {
+					 	alert("You can not send Cross Domain AJAX requests: "+errorThrown);
+					 }
+		});
+	})
 			.done(function(data) {
 				// log data to the console to see what is being passed
 				console.log(data)
@@ -101,11 +103,12 @@ $(document).ready(function(){
 				console.log(data);
 			
 			});
-			  var xhr = new XMLHttpRequest();
-        xhr.open('GET', 'http://celestelayne.github.io/percolate-cs/', true);
-				xhr.onreadystatechange = function () {
-				  if (this.status == 200 && this.readyState == 4) {
-				    console.log('response: ' + this.responseText);
+
+			var xhr = new XMLHttpRequest();
+      xhr.open('GET', 'http://celestelayne.github.io/percolate-cs/', true);
+			xhr.onreadystatechange = function () {
+			  if (this.status == 200 && this.readyState == 4) {
+			    console.log('response: ' + this.responseText);
 				  }
 				};
         xhr.send(); // XHR finished loading: GET 

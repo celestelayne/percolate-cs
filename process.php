@@ -30,7 +30,6 @@ $data       = array();
         $from = $_REQUEST['Email'];
         $to = 'layne.celeste@gmail.com'; // substitute out your email address to receive submit data
         $header = "From:" . $from . "\r\n";
-        $header .= "cc:" . $to . "\r\n";
         $subject = 'Message from Shinola Case Study Page';
 
         $body = $firstname . " " . "Thanks for requesting a demo! We will get back to you soon.";
