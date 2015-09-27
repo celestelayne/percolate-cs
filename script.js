@@ -16,7 +16,7 @@ $(document).ready(function(){
 		// process the form
 		$.ajax({
 			type 			: 'POST',
-			url				: 'http://celestelayne.github.io/percolate-cs/process.php', // url where we want to post
+			url				: 'process.php', // url where we want to post
 			crossDomain: true,
 			data			: formData, // data object
 			dataType	: 'json', // type of data we expect back
