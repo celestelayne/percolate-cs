@@ -1,21 +1,13 @@
 <?php
 
-header('Access-Control-Allow-Origin: *'); // so anyone can access
+header('Access-Control-Allow-Origin: *');  
 header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type, Content-Range, Content-Disposition, Content-Description');
-
-$_POST['extra']='POST Request from http://celestelayne.github.io/percolate-cs/';
-echo json_encode($_POST);
 
 $ajax = isset($_SERVER['HTTP_X_REQUESTED_WITH']) &&
         $_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest';
 
-if ($ajax) {
-    // handle differently
-}
-
-// respond to preflights
-if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   // return only the headers and not the content
   // only allow CORS if we're doing a GET - i.e. no saving for now.
   if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD']) && $_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD'] == 'GET') {
@@ -41,7 +33,7 @@ $data       = array();
         $header .= "cc:" . $to . "\r\n";
         $subject = 'Message from Shinola Case Study Page';
 
-        $body = $firstname . " " . "Thanks for requesting a demo! We’ll get back to you soon.";
+        $body = $firstname . " " . "Thanks for requesting a demo! We will get back to you soon.";
     }
 
     // Check if first name entered
@@ -78,13 +70,19 @@ if ( ! empty($errors)) {
 
         // if there are no errors process our form, then return a message
 
-        // DO ALL YOUR FORM PROCESSING HERE
-        // THIS CAN BE WHATEVER YOU WANT TO DO (LOGIN, SAVE, UPDATE, WHATEVER)
-
         // show a message of success and provide a true success variable
         $data['success'] = true;
         $data['message'] = 'Success!';
     }
+
+    // if there are no errors, send the email
+if(!$errFName && !$errLName && !$errPhone && !$errEmail && !$errCompany && !$errJFunc) {
+    if(mail($to, $subject, $header, $body, $from)) {
+        $result='<div class="alert alert-success">Thank You! We will be in touch</div>';
+    } else {
+        $result='<div class="alert alert-danger">Sorry there was an error sending your message.</div>';
+    }
+}
 
     // return all our data to an AJAX call
     echo json_encode($data);

@@ -1,9 +1,6 @@
 $(document).ready(function(){
 
-	$('form').submit(function(event){
-
-		$('.form-group').removeClass('has-error'); // remove the error class
-		$('.help-block').remove(); // remove the error text
+	$('#contact').submit(function(event){
 
 		var formData = {
 				'firstName'	: $('input[name=FirstName]').val(),
@@ -11,36 +8,44 @@ $(document).ready(function(){
 				'phone'				: $('input[name=Phone]').val(),
 				'email'				: $('input[name=Email]').val(),
 				'company'			: $('input[name=Company]').val(),
-				'jobFunction'	: $('select[name=Job_Function]').val()			
+				'jobFunction'	: $('select[name=Job_Function]').val()
 		};
 
 		console.log(formData);
 
 		// process the form
-		$.ajax({
-			type 			: 'GET',
-			headers		: {
-	        'Accept': 'application/json',
-	        'Content-Type': 'text/plain'
-	    },
-			url				: 'http://celestelayne.github.io/percolate-cs/process.php', // url where we want to post
-			data			: formData, // data object
-			dataType	: 'json', // type of data we expect back
-      crossDomain: true,
-      success:function(data)
-			 {
-			 	console.log(data);
-			 	alert("Data from Form"+JSON.stringify(data));
-			 },
-			 error:function(jqXHR,textStatus,errorThrown)
-			 {
-			 	alert("You can not send Cross Domain AJAX requests: "+errorThrown);
-			 }
+			$.ajax({
+				type 			: 'POST',
+				url				: 'http://celestelayne.github.io/percolate-cs/process.php', // url where we want to post
+				data			: formData, // data sent
+				dataType	: 'json', // type of data we expect back
+	      contentType: "application/x-www-form-urlencoded; charset=utf-8",
+	      success:function(data)
+				 {
+				 	console.log(formData);
+				 },
+				error:function(jqXHR,textStatus,errorThrown)
+				 {
+				 	alert("You can not send Cross Domain AJAX requests: "+errorThrown);
+				 }
 		})
-
 			.done(function(data) {
 				// log data to the console to see what is being passed
 				console.log(data)
+
+			$('.form-group').removeClass('has-error'); // remove the error class
+			$('.help-block').remove(); // remove the error text
+
+				// Set the message text.
+	    $('.form-group').text(data);
+
+	    // Clear the form.
+	    $('#FirstName').val('');
+	    $('#LastName').val('');
+	    $('#Phone').val('');
+	    $('#Email').val('');
+	    $('#Company').val('');
+	    $('#Job_Function').val('');
 
 				// here we will handle errors and validation messages
 				if ( ! data.success) {
@@ -88,7 +93,6 @@ $(document).ready(function(){
 
 				}
 			})
-
 			// using the fail promise callback
 			.fail(function(data) {
 
@@ -97,14 +101,14 @@ $(document).ready(function(){
 				console.log(data);
 			
 			});
-
-				var xhr = new XMLHttpRequest();
-				xhr.open('GET', 'http://celestelayne.github.io/percolate-cs/', true);
-				xhr.setRequestHeader({'Accept': 'application/json', 'Content-Type': 'text/plain'});
-				xhr.onload = function () {
-				    console.log(xhr.responseText);
+			  var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'http://celestelayne.github.io/percolate-cs/', true);
+				xhr.onreadystatechange = function () {
+				  if (this.status == 200 && this.readyState == 4) {
+				    console.log('response: ' + this.responseText);
+				  }
 				};
-				xhr.send();
+        xhr.send(); // XHR finished loading: GET 
 
 				// stop the form from actually posting
 				event.preventDefault();
