@@ -17,7 +17,15 @@ $(document).ready(function(){
 		$.ajax({
 			type 			: 'POST',
 			url				: 'http://celestelayne.github.io/percolate-cs/process.php', // url where we want to post
+			contentType: 'text/plain',
 			crossDomain: true,
+			xhrFields: {
+				withCredentials: false
+			},
+			headers: {
+				// Set any custom headers here
+				'Access-Control-Allow-Credentials: true', 'Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}', 'Access-Control-Max-Age: 86400'
+			},
 			data			: formData, // data object
 			dataType	: 'json', // type of data we expect back
 			encode		: true
