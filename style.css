@@ -1,0 +1,459 @@
+	/*---------->>> VARIABLES <<<----------*/
+	$percolate-orange: '#F16421';
+	$accent-red: '#9C2C50';
+	$accent-blue: '#0A506C';
+	$body-color-black: '#2B2C30';
+	$body-color-white: '#F2F2F2'
+	$accent-grey: '#666';
+
+	$sans-serif-font: 'Helvetica, Arial, sans-serif';
+	$serif-font: 'Georgia, serif';
+	$header-font: 'Didact Gothic';
+
+	$width-name: max-device-width;
+
+	$mobile-width: 320px;
+	$tablet-width: 320px;
+	$web-width: 320px;
+
+	/*---------->>> BASE STYLES <<<----------*/
+	
+	/* Desktop */
+  @media screen and (min-width: 768px) {
+    	body {
+      	background: #f2f2f2;
+    	}
+
+    	hr {
+ 		    margin: 60px 0;
+    	}
+
+    	.header {
+    		max-width: 825pt;
+		    margin-left: auto;
+		    margin-right: auto;
+		    padding: 0;
+    	}
+
+  	}
+	
+	/* Tablet */
+  @media (min-width: 481px) and (max-width: 768px) {
+    	body {
+      	background: #FFF;
+    	}
+
+    	.case-study-section {
+    		width: 50%;
+    	}
+
+	   .footer-nav {
+				text-align: center;
+			}
+
+			.footer-nav ul {
+				line-height: 1.5em;
+			}
+
+			.footer-logo {
+				/*float: right;*/
+				text-align: center;
+			}
+
+  }
+
+	/* Mobile */
+  @media only screen and (max-width: 480px) {
+    	body {
+      	background: #FFF;
+    }
+  }
+
+  /*--------------------
+  [Table of Contents]
+
+    1.	Body
+  	2.	Header | #header
+  	3.	Content | #content
+  	2.	Footer | #footer
+
+  --------------------*/
+
+  * {
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  body {
+		color: #2B2C30;
+		font-size: 62.5%;
+    line-height: 1.5em;
+	}
+
+	p {
+		font-size: 2em;
+		line-height: 1.5em;
+	}
+
+	h1 {
+		font-family: 'Georgia, serif';
+		line-height: 1.5em;
+		font-weight: 100;
+		font-size: 8em; 
+	}
+
+	h3 {
+		line-height: 1.4em;
+		font-size: 3em;
+		font-weight: bold;
+	}
+
+	hr {
+		display: block;
+		clear: both;
+    height: 0;
+    border: 1px solid #e0e2e2;
+    border-width: 1px 0 0;
+    color: #e0e2e2;
+	}
+
+	.row{
+		margin-left: 0;
+		margin-right: 0; 
+	}
+
+	/*---------->>> HEADER SECTION <<<----------*/
+
+	.nav-menu {
+		margin-bottom: 0;
+		height: 90px;
+		/*color: #0a506c;*/
+	}
+
+	.navbar-default .navbar-nav>li>a {
+		color: #0a506c;
+	}
+
+	.navbar-default .navbar-nav>li>a:hover {
+		color: #F16421;
+	}
+
+	.logo {
+		height: 1.5em;
+		float: left;
+	}
+
+	a.navbar-brand {
+		display: block;
+    margin-top: 15px;
+    height: inherit;
+	}
+
+	#primary-nav {
+		display: inline-block;
+    float: left;
+    margin-top: 25px;
+    font-size: 18px;
+    font-family: 'Georgia, serif';
+	}
+
+	#secondary-nav {
+		display: inline-block;
+		float: right;
+		margin-top: 25px;
+		font-size: 13px;
+	}
+
+	.btn-outlined {
+		border-radius: 0;
+      -webkit-transition: all 0.3s;
+         -moz-transition: all 0.3s;
+              transition: all 0.3s;
+  }
+
+  .btn-outlined.btn-theme {
+  	background: none;
+    color: #F16421;
+    border: 2px solid #F16421;
+	}
+
+	a.btn.btn-outlined.btn-theme {
+    padding: 12px 12px;
+    text-transform: uppercase;
+	}
+
+	.btn.btn-outlined.btn-theme:hover,
+  .btn.btn-outlined.btn-theme:active {
+	    color: #FFF;
+	    background-color: #F16421;
+	    border-color: #F16421;
+	}
+
+	#percolate-navbar-collapse {
+		background-color: #FFF;
+	}
+
+	/*---------->>> CONTENT SECTION <<<----------*/
+	
+	/*   Hero Container   */
+
+	.hero-container {
+		background-image: url('http://www.30npire.com/sites/default/files/watches_S_01_00050_PH_2000x1150.jpg');
+		margin: 0;
+		width: 100%;
+		height: 550px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+	}
+
+	.hero {
+		position: relative;
+		top: 25%;
+	}
+
+	.hero>div {
+		display: table-cell;
+    vertical-align: middle;
+	}
+
+	.hero-container .mask {
+    background: rgba(31,9,60,.4);
+    height: 100%;
+  }
+
+	span.feature-hed {
+		color: #f2f2f2;    
+  }
+	
+	/*   Highlight Container   */
+	
+	section.highlight {
+		font-size: 2em;
+    font-family: 'Georgia, serif';
+    margin: 60px 0 0;
+	}
+
+	.case-study-container h1 {
+		color: #f16421;
+	}
+
+	.testimonial {
+		color: #666;
+		margin-bottom: 60px;
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+
+	.quote-body {
+    font-style: italic;
+    font-family: 'Georgia, serif';
+    margin-bottom: 10px;
+    font-size: 4em;
+    line-height: 1.5em;
+	}
+
+	.quotee {
+		font-size: 2.4em;
+	}
+
+	.quotee img {
+		height: 48px;
+	}
+
+	/*   Case Study Container   */
+	
+	.case-study-section {
+    /*position: relative;*/
+	}
+
+  .case-study-section img {
+		width: 100%;
+		height: 215px;
+		background-size: cover;
+	  overflow: hidden;
+	  background-position: center center;
+	  position: relative;
+   }
+
+
+	.case-study-section p {
+		margin: 0;
+    margin-bottom: 40px;
+    font-size: 3em;
+    /*line-height: 1.2em;*/
+	}
+
+	.primary-nav {
+		display: block;
+	}
+
+	.secondary-nav {
+		display: block;
+	}
+
+	.site-nav {
+    font-size: 13px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #b6400f;
+  }
+
+  .site-nav h4 {
+    font-size: 1pc;
+    margin: 1em 0;
+  }
+
+  /*   Quote Container   */
+
+  .quote-container {
+    margin: 0;
+    width: 100%;
+    height: auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+  }
+
+  .quote-container.shinola {
+  	background-image: url(http://b-i.forbesimg.com/joannmuller/files/2013/07/shinola-cropped1.jpg);
+  }
+
+  .quote-container.shinola.pad {
+  	padding: 40px;
+  }
+
+  .quote {
+  	background: rgba(31,9,60,.8);
+    color: #F2F2F2;
+  }
+
+  .quote p {
+  	font-style: italic;
+    font-family: 'Georgia, serif';
+    margin-bottom: 10px;
+    font-size: 4em;
+    line-height: 1.5em;
+  }
+
+  section.quote.pad {
+  	padding: 40px;
+  }
+
+  .testimonial img {
+  	height: 48px;
+  }
+	
+	/*   Demo Form Container   */
+
+  .demo-form-container {
+    margin: 0;
+    width: 100%;
+    background: #f9f9f9;
+    text-align: center;
+    padding: 40px;
+    width: 100%;
+    font-size: 1.4em; 
+  }
+
+  form {
+  	font-size: 2em;
+  }
+
+  .form>div {
+  	margin: 10px 0;
+  }
+
+  .demo-form {
+  	color: #a42c50;
+  }
+
+  .demo-form h3 {
+  	margin: 30px 0;
+  }
+
+  .demo-form p {
+  	margin: 30px 0;
+  }
+
+  .demo-form input {
+  	border: none;
+  	padding: .75em;
+    overflow: hidden;
+    line-height: 1.2em;
+    color: #999;
+    box-sizing: border-box;
+    display: inline-block;
+    border-radius: 0;
+/*margin: .5em 0;*/
+  }
+
+  select#Job_Function {
+  	border: none;
+  	border-radius: 0;
+    overflow: hidden;
+    line-height: 1.2em;
+    color: #999;
+    box-sizing: border-box;
+    background-color: #fff;
+    -webkit-appearance: button;
+    height: 48px;
+    width: 215px;
+    padding: 10px;
+  }
+
+  /*---------->>> FOOTER SECTION <<<----------*/
+
+	.footer-container {
+		background-color: #F16421;
+	}
+
+	.footer {
+		color: #F2F2F2;
+    padding: 20px 0;
+	}
+
+	footer>.primary-nav {
+		font-size: 1.2em;
+	}
+
+	footer>.secondary-nav {
+		font-size: 2em;
+	}
+
+	.footer a {
+		color: #f2f2f2;
+		margin: 30px 0;
+    text-decoration: none;
+	}
+
+	.footer-logo {
+		/*float: left;*/
+		margin-top: 20px;
+	}
+
+	.footer-logo a img {
+		display: inline;
+    height: 2em;
+	}
+
+	.footer-nav {
+		float: right;
+	}
+
+	.footer-nav ul {
+		list-style-type: none;
+    margin: 30px 0;
+	}
+
+	.footer-nav ul li {
+		display: inline;
+		margin: 0 20px 0 0;
+	}
+
+	.site-selection ul li {
+		list-style-type: none;
+		font-size: 2em;
+    line-height: 1.5em;
+	}
