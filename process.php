@@ -1,5 +1,11 @@
 <?php
 
+header('content-type: application/json; charset=utf-8');
+header("access-control-allow-origin: *");
+
+$errors     = array();
+$data       = array();
+
     if (isset($_POST["submit"])) {
         $firstname = $_POST['FirstName'];
         $lastname = $_POST['LastName'];
@@ -41,12 +47,24 @@
         $errJFunc = 'Please select from the dropdown';
     }
 // if there are no errors, send the email
-if(!$errFName && !$errLName && !$errPhone && !$errEmail && !$errCompany && !$errJFunc) {
-    if(mail($to, $subject, $header, $body, $from)) {
-        $result='<div class="alert alert-success">Thank You! We will be in touch</div>';
+if ( ! empty($errors)) {
+
+        // if there are items in our errors array, return those errors
+        $data['success'] = false;
+        $data['errors']  = $errors;
     } else {
-        $result='<div class="alert alert-danger">Sorry there was an error sending your message.</div>';
+
+        // if there are no errors process our form, then return a message
+
+        // DO ALL YOUR FORM PROCESSING HERE
+        // THIS CAN BE WHATEVER YOU WANT TO DO (LOGIN, SAVE, UPDATE, WHATEVER)
+
+        // show a message of success and provide a true success variable
+        $data['success'] = true;
+        $data['message'] = 'Success!';
     }
-}
+
+    // return all our data to an AJAX call
+    echo json_encode($data);
 
 ?>
