@@ -2,7 +2,7 @@
 
 // for cross-domain
 switch ($_SERVER['HTTP_ORIGIN']) {
-    case 'http://celestelayne.github.io/percolate-cs/': case 'http://celestelayne.github.io/percolate-cs/':
+    case 'http://localhost': case 'https://localhost':
     header('Access-Control-Allow-Origin: '.$_SERVER['HTTP_ORIGIN']);
     header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
     header('Access-Control-Max-Age: 1000');
