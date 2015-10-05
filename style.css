@@ -47,16 +47,11 @@
     		width: 50%;
     	}
 
-	   .footer-nav {
-				text-align: center;
-			}
-
-			.footer-nav ul {
-				line-height: 1.5em;
-			}
+			.footer-nav {
+		    text-align: center;
+		  }
 
 			.footer-logo {
-				/*float: right;*/
 				text-align: center;
 			}
 
@@ -71,6 +66,26 @@
 			.primary-nav.row {
 				display: none;
 			}
+
+			section.hero {
+    		top: 5%;
+			}
+
+			.quotee img {
+		    display: block;
+		    text-align: center;
+		  }
+
+			.quotee span {
+		    display: block;
+		    line-height: 2em;
+		    text-align: center;
+		  }
+
+			.footer-nav ul li {
+		    display: block;
+		    line-height: 2em;
+		  }
   }
 
   /*--------------------
@@ -167,6 +182,61 @@
 		margin-top: 25px;
 		font-size: 13px;
 	}
+
+	.hamburger {
+		padding: 15px;
+		margin-top: 20px;
+		margin-bottom: 0;
+		border-width: 0;
+	}
+
+	.navbar-default 
+	.navbar-toggle 
+	.icon-bar {
+		background-color: #F16421;
+	}
+
+	.navbar-default
+	.navbar-toggle {
+		border: none;
+		background: transparent !important;
+	}
+
+	.navbar-toggle:hover {
+    background: transparent !important;
+  }
+
+  .icon-bar {
+    /*width: 22px;*/
+    transition: all 0.2s;
+  }
+
+  .top-bar {
+    transform: rotate(45deg);
+    transform-origin: 10% 10%;
+  }
+
+  .middle-bar {
+  	opacity: 0;
+  }
+
+  .bottom-bar {
+    transform: rotate(-45deg);
+    transform-origin: 10% 90%;
+  }
+
+  .navbar-toggle.collapsed .top-bar {
+		transform: rotate(0);
+  }
+
+  .navbar-toggle.collapsed .middle-bar {
+		opacity: 1;
+  }
+
+  .navbar-toggle.collapsed .bottom-bar {
+		transform: rotate(0);
+  }  
+   
 
 	.btn-outlined {
 		border-radius: 0;
@@ -428,17 +498,12 @@
 	}
 
 	.footer-logo {
-		/*float: left;*/
 		margin-top: 20px;
 	}
 
 	.footer-logo a img {
 		display: inline;
     height: 2em;
-	}
-
-	.footer-nav {
-		float: right;
 	}
 
 	.footer-nav ul {
