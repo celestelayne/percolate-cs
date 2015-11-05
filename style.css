@@ -49,6 +49,10 @@
 				float: right;
 			}
 
+			.footer-nav ul li {
+				/*display: inline;*/
+			}
+
   	}
 	
 	/* Tablet */
@@ -82,8 +86,10 @@
 			
 			#secondary-nav a {
 				width: 50%;
-				text-align: center;
-				color: #F2F2F2;
+		    text-align: center;
+		    font-size: 1.25em;
+		    color: #F2F2F2;
+		    border-color: #F2F2F2;
 			}
 
     	.case-study-section {
@@ -96,6 +102,10 @@
 
 			.footer-logo {
 				text-align: center;
+			}
+
+			.footer-nav ul li {
+				display: inline;
 			}
 
   }
@@ -123,7 +133,9 @@
 
     	#secondary-nav a {
 		    text-align: center;
+		    font-size: 1.25em;
 		    color: #F2F2F2;
+		    border-color: #F2F2F2;
     	}
 
 			section.hero {
@@ -144,6 +156,14 @@
 			.primary-nav.row {
 		    display: none;
 		  }
+			
+			.footer-nav {
+				line-height: 2em;
+			}
+
+		  .footer-nav ul li {
+  		  display: block;
+  		}
   }
 
   /*--------------------
